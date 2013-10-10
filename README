@@ -1,12 +1,15 @@
-oh-my-zsh
+ohmyzsh
 
 This is the oh-my-zsh module. It installs oh-my-zsh for a user and changes
 their shell to zsh. It has been tested under Ubuntu.
 
 oh-my-zsh is a community-driven framework for managing your zsh configuration.
 
-class { 'oh-my-zsh': }
-oh-my-zsh::install { 'acme': }
+This module is called ohmyzsh as Puppet does not support hyphens in module
+names.
+
+class { 'ohmyzsh': }
+ohmyzsh::install { 'acme': }
 
 
 License

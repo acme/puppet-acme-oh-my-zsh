@@ -1,7 +1,10 @@
-# == Class: oh-my-zsh::install
+# == Class: ohmyzsh::install
 #
-# This is the oh-my-zsh module. It installs oh-my-zsh for a user and changes
+# This is the ohmyzsh module. It installs oh-my-zsh for a user and changes
 # their shell to zsh. It has been tested under Ubuntu.
+#
+# This module is called ohmyzsh as Puppet does not support hyphens in module
+# names.
 #
 # oh-my-zsh is a community-driven framework for managing your zsh configuration.
 #
@@ -11,8 +14,8 @@
 #
 # === Examples
 #
-# class { 'oh-my-zsh': }
-# oh-my-zsh::install { 'acme': }
+# class { 'ohmyzsh': }
+# ohmyzsh::install { 'acme': }
 #
 # === Authors
 #
@@ -22,22 +25,22 @@
 #
 # Copyright 2013 Leon Brocard
 #
-define oh-my-zsh::install() {
-  exec { 'oh-my-zsh::git clone':
+define ohmyzsh::install() {
+  exec { 'ohmyzsh::git clone':
     creates => "/home/${name}/.oh-my-zsh",
     command => "/usr/bin/git clone git://github.com/robbyrussell/oh-my-zsh.git /home/${name}/.oh-my-zsh",
     user    => $name,
     require => [Package['git'], Package['zsh']]
   }
 
-  exec { 'oh-my-zsh::cp .zshrc':
+  exec { 'ohmyzsh::cp .zshrc':
     creates => "/home/${name}/.zshrc",
     command => "/bin/cp /home/${name}/.oh-my-zsh/templates/zshrc.zsh-template /home/${name}/.zshrc",
     user    => $name,
-    require => Exec['oh-my-zsh::git clone'],
+    require => Exec['ohmyzsh::git clone'],
   }
 
-  user { "oh-my-zsh::user ${name}":
+  user { "ohmyzsh::user ${name}":
     ensure  => present,
     name    => $name,
     shell   => '/usr/bin/zsh',

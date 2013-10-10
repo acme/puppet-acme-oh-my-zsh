@@ -1,11 +1,11 @@
-name    'acme-oh-my-zsh'
+name    'acme-ohmyzsh'
 version '0.1.0'
-source 'UNKNOWN'
+source 'https://github.com/acme/puppet-acme-oh-my-zsh'
 author 'acme'
 license 'Apache License, Version 2.0'
-summary 'UNKNOWN'
-description 'UNKNOWN'
-project_page 'UNKNOWN'
+summary 'ohmyzsh module'
+description 'This is the ohmyzsh module. It installs oh-my-zsh for a user and changes their shell to zsh'
+project_page 'https://github.com/acme/puppet-acme-oh-my-zsh'
 
 ## Add dependencies, if any:
 # dependency 'username/name', '>= 1.2.0'
