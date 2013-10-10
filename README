@@ -1,16 +1,27 @@
 oh-my-zsh
 
-This is the oh-my-zsh module.
+This is the oh-my-zsh module. It installs oh-my-zsh for a user and changes
+their shell to zsh. It has been tested under Ubuntu.
+
+oh-my-zsh is a community-driven framework for managing your zsh configuration.
+
+class { 'oh-my-zsh': }
+oh-my-zsh::install { 'acme': }
+
 
 License
 -------
+
+Apache License, Version 2.0.
 
 
 Contact
 -------
 
+Leon Brocard acme@astray.com
+
 
 Support
 -------
 
-Please log tickets and issues at our [Projects site](http://projects.example.com)
+Please log tickets and issues at [GitHub](https://github.com/acme/puppet-acme-oh-my-zsh)
