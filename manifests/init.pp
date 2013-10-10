@@ -36,6 +36,16 @@
 # Copyright 2013 Your name here, unless otherwise noted.
 #
 class oh-my-zsh {
+  if(!defined(Package['git'])) {
+    package { 'git':
+      ensure => present,
+    }
+  }
 
+  if(!defined(Package['zsh'])) {
+    package { 'zsh':
+      ensure => present,
+    }
+  }
 
 }
