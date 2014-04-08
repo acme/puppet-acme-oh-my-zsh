@@ -1,7 +1,7 @@
 # == Class: ohmyzsh
 #
 # This is the ohmyzsh module. It installs oh-my-zsh for a user and changes
-# its shell to zsh. 
+# its shell to zsh.
 #
 # This module is called ohmyzsh as Puppet does not support hyphens in module
 # names.
@@ -15,7 +15,7 @@
 #
 # [*home*]
 #   define root path of users homedirectory, default is /home.
-#   
+#
 #
 # === Examples
 #

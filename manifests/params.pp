@@ -4,6 +4,5 @@ class ohmyzsh::params {
       $zsh = '/usr/bin/zsh'
       $home = '/home'
     }
-  
   }
 }
