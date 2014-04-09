@@ -8,6 +8,12 @@ This module is called ohmyzsh as Puppet does not support hyphens in module names
 
 ## Installation
 
+### From Puppet Forge
+
+```bash
+  $ puppet module install acme/ohmyzsh
+```
+
 ### From source
 
 ```bash
