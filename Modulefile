@@ -1,5 +1,5 @@
 name    'acme-ohmyzsh'
-version '0.1.1'
+version '0.1.2'
 source 'https://github.com/acme/puppet-acme-oh-my-zsh'
 author 'acme'
 license 'Apache License, Version 2.0'
