@@ -82,6 +82,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.options        = "--verbose --debug"
   end
 
+  config.vm.provision :serverspec do |spec|
+    spec.pattern = 'spec/*_spec.rb'
+  end
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
