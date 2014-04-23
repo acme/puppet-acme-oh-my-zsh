@@ -43,10 +43,11 @@ define ohmyzsh::install() {
 
   if ! defined(User[$name]) {
     user { "ohmyzsh::user ${name}":
-      ensure  => present,
-      name    => $name,
-      shell   => $ohmyzsh::params::zsh,
-      require => Package['zsh'],
+      ensure     => present,
+      name       => $name,
+      managehome => true,
+      shell      => $ohmyzsh::params::zsh,
+      require    => Package['zsh'],
     }
   } else {
     User <| title == $name |> {
