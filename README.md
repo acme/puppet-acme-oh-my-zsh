@@ -39,6 +39,9 @@ ohmyzsh::theme { ['root', 'acme']: theme => 'robbyrussell' } # specific theme
 
 # activate plugins for a user
 ohmyzsh::plugins { 'acme': plugins => 'git github' }
+
+# upgrade oh-my-zsh for a single user
+ohmyzsh::upgrade { 'acme': }
 ```
 
 License
