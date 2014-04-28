@@ -42,6 +42,9 @@ ohmyzsh::plugins { 'acme': plugins => 'git github' }
 
 # upgrade oh-my-zsh for a single user
 ohmyzsh::upgrade { 'acme': }
+
+# set path for user
+ohmyzsh::path { ['acme']: path => '/usr/local/rbenv/shims:/usr/local/rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games' }
 ```
 
 License
