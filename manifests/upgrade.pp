@@ -28,8 +28,10 @@
 define ohmyzsh::upgrade() {
   if $name == 'root' { $home = '/root' } else { $home = "${ohmyzsh::params::home}/${name}" }
   exec { "ohmyzsh::git upgrade ${name}":
-    command => '/usr/bin/git pull --rebase --stat origin master',
+    command => 'git pull --rebase --stat origin master',
+    unless => "git fetch origin && test $(git rev-parse @{u}) = $(git rev-parse HEAD)",
     cwd     => "${home}/.oh-my-zsh",
+    path    => ['/usr/bin/', '/bin'],
     user    => $name,
     require => [Package['git'], Package['zsh']]
   }
