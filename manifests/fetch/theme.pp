@@ -25,18 +25,21 @@ define ohmyzsh::fetch::theme (
       source      => $url,
       destination => $fullpath,
       user        => $name,
+      require     => Ohmyzsh::Install[$name],
     }
   } elsif $source != 'UNSET' {
     file { $fullpath:
       ensure => present,
       source => $source,
       owner  => $name,
+      require     => Ohmyzsh::Install[$name],
     }
   } elsif $content != 'UNSET' {
     file { $fullpath:
       ensure  => present,
       content => $content,
       owner   => $name,
+      require     => Ohmyzsh::Install[$name],
     }
   }
 
