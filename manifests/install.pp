@@ -27,7 +27,7 @@
 # Copyright 2014
 #
 define ohmyzsh::install(
-  $set_sh => true,
+  $set_sh = true,
 ) {
   if $name == 'root' { $home = '/root' } else { $home = "${ohmyzsh::params::home}/${name}" }
   exec { "ohmyzsh::git clone ${name}":
