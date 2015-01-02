@@ -18,6 +18,9 @@ ohmyzsh::install { 'user1': }
 # for multiple users in one shot
 ohmyzsh::install { ['root', 'user1']: }
 
+# install a theme for a user
+ohmyzsh::fetch::theme { 'root': url => 'http://zanloy.com/files/dotfiles/oh-my-zsh/squared.zsh-theme' }
+
 # set a theme for a user
 ohmyzsh::theme { ['root', 'user1']: } # would install 'clean' theme as default
 
