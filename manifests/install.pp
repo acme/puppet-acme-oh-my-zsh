@@ -33,16 +33,18 @@ define ohmyzsh::install(
   exec { "ohmyzsh::git clone ${name}":
     creates => "${home}/.oh-my-zsh",
     command => "/usr/bin/git clone git://github.com/robbyrussell/oh-my-zsh.git ${home}/.oh-my-zsh",
-    user    => $name,
+    path    => ['/bin', '/usr/bin'],
     onlyif  => "getent passwd ${name} | cut -d : -f 6 | xargs test -e",
+    user    => $name,
     require => Package['git'],
   }
 
   exec { "ohmyzsh::cp .zshrc ${name}":
     creates => "${home}/.zshrc",
     command => "/bin/cp ${home}/.oh-my-zsh/templates/zshrc.zsh-template ${home}/.zshrc",
-    user    => $name,
+    path    => ['/bin', '/usr/bin'],
     onlyif  => "getent passwd ${name} | cut -d : -f 6 | xargs test -e",
+    user    => $name,
     require => Exec["ohmyzsh::git clone ${name}"],
   }
 
