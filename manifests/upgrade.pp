@@ -21,7 +21,9 @@
 #
 # Copyright 2014
 #
-define ohmyzsh::upgrade() {
+define ohmyzsh::upgrade {
+
+  include ohmyzsh::params
 
   if ! defined(Package['git']) {
     package { 'git':
@@ -36,7 +38,8 @@ define ohmyzsh::upgrade() {
   }
 
   exec { "ohmyzsh::git upgrade ${name}":
-    command => '/usr/bin/git pull --rebase --stat origin master',
+    command => 'git pull --rebase --stat origin master',
+    path    => ['/bin', '/usr/bin'],
     cwd     => "${home}/.oh-my-zsh",
     user    => $name,
     require => Package['git'],

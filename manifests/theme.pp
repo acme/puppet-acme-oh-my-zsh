@@ -25,6 +25,8 @@ define ohmyzsh::theme(
   $theme = 'clean',
 ) {
 
+  include ohmyzsh::params
+
   if $name == 'root' {
     $home = '/root'
   } else {

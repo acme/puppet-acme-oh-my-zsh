@@ -39,10 +39,15 @@ define ohmyzsh::install(
     }
   }
 
-  if $name == 'root' { $home = '/root' } else { $home = "${ohmyzsh::params::home}/${name}" }
+  if $name == 'root' {
+    $home = '/root'
+  } else {
+    $home = "${ohmyzsh::params::home}/${name}"
+  }
+
   exec { "ohmyzsh::git clone ${name}":
     creates => "${home}/.oh-my-zsh",
-    command => "/usr/bin/git clone git://github.com/robbyrussell/oh-my-zsh.git ${home}/.oh-my-zsh",
+    command => "git clone https://github.com/robbyrussell/oh-my-zsh.git ${home}/.oh-my-zsh",
     path    => ['/bin', '/usr/bin'],
     onlyif  => "getent passwd ${name} | cut -d : -f 6 | xargs test -e",
     user    => $name,
@@ -51,7 +56,7 @@ define ohmyzsh::install(
 
   exec { "ohmyzsh::cp .zshrc ${name}":
     creates => "${home}/.zshrc",
-    command => "/bin/cp ${home}/.oh-my-zsh/templates/zshrc.zsh-template ${home}/.zshrc",
+    command => "cp ${home}/.oh-my-zsh/templates/zshrc.zsh-template ${home}/.zshrc",
     path    => ['/bin', '/usr/bin'],
     onlyif  => "getent passwd ${name} | cut -d : -f 6 | xargs test -e",
     user    => $name,

@@ -33,13 +33,18 @@ define ohmyzsh::plugins(
     $home = "${ohmyzsh::params::home}/${name}"
   }
 
-  if $name {
-    file_line { "${name}-${plugins}-install":
-      path    => "${home}/.zshrc",
-      line    => "plugins=(${plugins})",
-      match   => '^plugins=',
-      require => Ohmyzsh::Install[$name]
-    }
+  if is_array($plugins) {
+    $plugins_real = join($plugins, ' ')
+  } else {
+    validate_string($plugins)
+    $plugins_real = $plugins
+  }
+
+  file_line { "${name}-${plugins_real}-install":
+    path    => "${home}/.zshrc",
+    line    => "plugins=(${plugins_real})",
+    match   => '^plugins=',
+    require => Ohmyzsh::Install[$name]
   }
 
 }
