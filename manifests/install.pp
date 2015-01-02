@@ -1,4 +1,4 @@
-# == Class: ohmyzsh::install
+# == Define: ohmyzsh::install
 #
 # This is the ohmyzsh module. It installs oh-my-zsh for a user and changes
 # their shell to zsh. It has been tested under Ubuntu.
@@ -12,11 +12,6 @@
 #
 # set_sh: (boolean) whether to change the user shell to zsh
 #
-# === Examples
-#
-# class { 'ohmyzsh': }
-# ohmyzsh::install { 'acme': }
-#
 # === Authors
 #
 # Leon Brocard <acme@astray.com>
@@ -27,7 +22,7 @@
 # Copyright 2014
 #
 define ohmyzsh::install(
-  $set_sh = true,
+  $set_sh = false,
 ) {
 
   include ohmyzsh::params
