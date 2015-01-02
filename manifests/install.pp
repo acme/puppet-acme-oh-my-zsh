@@ -29,6 +29,19 @@
 define ohmyzsh::install(
   $set_sh = true,
 ) {
+
+  if ! defined(Package['git']) {
+    package { 'git':
+      ensure => present,
+    }
+  }
+
+  if ! defined(Package['zsh']) {
+    package { 'zsh':
+      ensure => present,
+    }
+  }
+
   if $name == 'root' { $home = '/root' } else { $home = "${ohmyzsh::params::home}/${name}" }
   exec { "ohmyzsh::git clone ${name}":
     creates => "${home}/.oh-my-zsh",
