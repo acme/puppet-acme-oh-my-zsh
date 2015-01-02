@@ -1,8 +1,8 @@
 # puppet-ohmyzsh
 [![Build Status](https://travis-ci.org/zanloy/puppet-ohmyzsh.svg?branch=master)](https://travis-ci.org/zanloy/puppet-ohmyzsh)
 
-This is the [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) module. It
-installs oh-my-zsh for a user and changes their shell to zsh. It can install
+This is a [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) module. It
+installs oh-my-zsh for a user and can change their shell to zsh. It can install
 and configure themes and plugins for users.
 
 oh-my-zsh is a community-driven framework for managing your zsh configuration.
@@ -15,8 +15,8 @@ for more details.
 # for a single user
 ohmyzsh::install { 'user1': }
 
-# for multiple users in one shot
-ohmyzsh::install { ['root', 'user1']: }
+# for multiple users in one shot but set their shell to zsh
+ohmyzsh::install { ['root', 'user1']: set_sh => true }
 
 # install a theme for a user
 ohmyzsh::fetch::theme { 'root': url => 'http://zanloy.com/files/dotfiles/oh-my-zsh/squared.zsh-theme' }
