@@ -26,9 +26,9 @@ define ohmyzsh::fetch::theme (
 
   if $url != 'UNSET' {
     wget::fetch { "ohmyzsh::fetch-${user}-${name}":
-      source => $url,
+      source      => $url,
       destination => $fullpath,
-      user => $user,
+      user        => $user,
     }
   } elsif $source != 'UNSET' {
     file { $fullpath:
@@ -38,9 +38,9 @@ define ohmyzsh::fetch::theme (
     }
   } elsif $content != 'UNSET' {
     file { $fullpath:
-      ensure => present,
+      ensure  => present,
       content => $content,
-      owner => $user,
+      owner   => $user,
     }
   }
 
