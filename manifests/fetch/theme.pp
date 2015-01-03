@@ -8,10 +8,6 @@ define ohmyzsh::fetch::theme (
 
   validate_string($filename, $url, $source, $content, $filename)
 
-  if ($url == 'UNSET') and ($source == 'UNSET') and ($content == 'UNSET') {
-    fail('No valid option set.')
-  }
-
   if $name == 'root' {
     $home = '/root'
   } else {
@@ -50,6 +46,8 @@ define ohmyzsh::fetch::theme (
       owner   => $name,
       require => File[$themepath],
     }
+  } else {
+    fail('No valid option set.')
   }
 
 }
