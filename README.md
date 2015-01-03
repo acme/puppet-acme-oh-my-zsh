@@ -15,7 +15,7 @@ for more details.
 # for a single user
 ohmyzsh::install { 'user1': }
 
-# for multiple users in one shot but set their shell to zsh
+# for multiple users in one shot and set their shell to zsh
 ohmyzsh::install { ['root', 'user1']: set_sh => true }
 
 # install a theme for a user
