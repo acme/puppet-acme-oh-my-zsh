@@ -23,7 +23,7 @@ describe 'ohmyzsh::install' do
       it do
         should contain_exec("ohmyzsh::git clone #{user}")
           .with_creates("#{values[:expect][:home]}/.oh-my-zsh")
-          .with_command("git clone https://github.com/robbyrussell/oh-my-zsh.git #{values[:expect][:home]}/.oh-my-zsh")
+          .with_command("git clone https://github.com/robbyrussell/oh-my-zsh.git #{values[:expect][:home]}/.oh-my-zsh || rmdir ${home}/.oh-my-zsh && exit 1")
           .with_user(user)
       end
       it do
