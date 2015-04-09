@@ -1,0 +1,23 @@
+{
+  "name": "zanloy-ohmyzsh",
+  "version": "1.0.2",
+  "author": "zanloy",
+  "summary": "Install and configure the best shell, oh-my-zsh.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/zanloy/puppet-ohmyzsh",
+  "project_page": "https://github.com/zanloy/puppet-ohmyzsh",
+  "issues_url": "https://github.com/zanloy/puppet-ohmyzsh/issues",
+  "description": "Install and configure the best shell, oh-my-zsh. This was originally a fork of acme/ohmyzsh.",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 3.2.0"},
+    {"name":"maestrodev/wget","version_requirement":">= 1.5.7"}
+  ],
+  "operatingsystem_support": [
+    {"operatingsystem": "ArchLinux"},
+    {"operatingsystem": "CentOS"},
+    {"operatingsystem": "Debian"},
+    {"operatingsystem": "OracleLinux"},
+    {"operatingsystem": "RedHat"},
+    {"operatingsystem": "Ubuntu"}
+  ]
+}

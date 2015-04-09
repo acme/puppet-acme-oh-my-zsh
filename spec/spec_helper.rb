@@ -1,9 +1,9 @@
-dir = File.expand_path(File.dirname(__FILE__))
-$LOAD_PATH.unshift File.join(dir, 'lib')
+require 'rspec-puppet'
+require 'puppetlabs_spec_helper/module_spec_helper'
 
-require 'net/ssh'
-require 'pathname'
-require 'rspec'
-require 'serverspec'
-include SpecInfra::Helper::Ssh
-include SpecInfra::Helper::DetectOS
+fixture_path = File.expand_path(File.join(__FILE__, '..', 'fixtures'))
+
+RSpec.configure do |c|
+  c.module_path = File.join(fixture_path, 'modules')
+  c.manifest_dir = File.join(fixture_path, 'manifests')
+end
