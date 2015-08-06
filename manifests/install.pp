@@ -31,7 +31,8 @@ define ohmyzsh::install() {
     creates => "${home}/.oh-my-zsh",
     command => "/usr/bin/git clone git://github.com/robbyrussell/oh-my-zsh.git ${home}/.oh-my-zsh",
     user    => $name,
-    require => [Package['git'], Package['zsh']]
+    require => [Package['git'], Package['zsh']],
+    cwd     => '/tmp',
   }
 
   exec { "ohmyzsh::cp .zshrc ${name}":
