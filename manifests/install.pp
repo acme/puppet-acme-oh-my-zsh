@@ -25,10 +25,13 @@
 #
 # Copyright 2013 Leon Brocard
 #
-define ohmyzsh::install() {
-  if $name == 'root' { $home = '/root' } else { $home = "${ohmyzsh::params::home}/${name}" }
+define ohmyzsh::install(
+  $home_path = $ohmyzsh::params::home,
+) {
+  if $name == 'root' { $home = '/root' } else { $home = "${home_path}/${name}" }
   exec { "ohmyzsh::git clone ${name}":
     creates => "${home}/.oh-my-zsh",
+    cwd     => $home,
     command => "/usr/bin/git clone git://github.com/robbyrussell/oh-my-zsh.git ${home}/.oh-my-zsh",
     user    => $name,
     require => [Package['git'], Package['zsh']]
