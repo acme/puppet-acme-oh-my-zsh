@@ -1,8 +1,9 @@
 define ohmyzsh::theme(
-  $theme = 'clean',
-  $user = $name
+  $theme     = 'clean',
+  $user      = $name,
+  $home_path = $ohmyzsh::params::home,
 ) {
-  if $user == 'root' { $home = '/root' } else { $home = "${ohmyzsh::params::home}/${user}" }
+  if $user == 'root' { $home = '/root' } else { $home = "${home_path}/${user}" }
   if $user {
     file_line { "${user}-${theme}-install":
       path    => "${home}/.zshrc",

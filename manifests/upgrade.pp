@@ -25,8 +25,10 @@
 #
 # Copyright 2013 Leon Brocard
 #
-define ohmyzsh::upgrade() {
-  if $name == 'root' { $home = '/root' } else { $home = "${ohmyzsh::params::home}/${name}" }
+define ohmyzsh::upgrade(
+  $home_path = $ohmyzsh::params::home,
+) {
+  if $name == 'root' { $home = '/root' } else { $home = "${home_path}/${name}" }
   exec { "ohmyzsh::git upgrade ${name}":
     command => '/usr/bin/git pull --rebase --stat origin master',
     cwd     => "${home}/.oh-my-zsh",
