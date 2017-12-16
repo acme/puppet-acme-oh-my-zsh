@@ -26,19 +26,21 @@
 # Copyright 2013 Leon Brocard
 #
 define ohmyzsh::install() {
-  if $name == 'root' { $home = '/root' } else { $home = "${ohmyzsh::params::home}/${name}" }
-  exec { "ohmyzsh::git clone ${name}":
-    creates => "${home}/.oh-my-zsh",
-    command => "/usr/bin/git clone git://github.com/robbyrussell/oh-my-zsh.git ${home}/.oh-my-zsh",
+  if $name == 'root' { $home = '/root' } else { $home = "${ohmyzsh::params::home}/${name}" }  
+  vcsrepo { "${home}/.oh-my-zsh":
+    ensure   => present,
+    provider => git,
+    source   => 'git://github.com/robbyrussell/oh-my-zsh.git',
     user    => $name,
     require => [Package['git'], Package['zsh']]
   }
+
 
   exec { "ohmyzsh::cp .zshrc ${name}":
     creates => "${home}/.zshrc",
     command => "/bin/cp ${home}/.oh-my-zsh/templates/zshrc.zsh-template ${home}/.zshrc",
     user    => $name,
-    require => Exec["ohmyzsh::git clone ${name}"],
+    require => Vcsrepo["${home}/.oh-my-zsh"],
   }
 
   if ! defined(User[$name]) {
